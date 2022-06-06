@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- LoginController控制器类，映射到"/login" -->
+    <bean name="/login"
+          class="com.example.stu.controller.LoginController"/>
+    <!-- LoginController控制器类，映射到"/register" -->
+    <bean name="/register"
+          class="com.example.stu.controller.RegisterController"/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 使用扫描机制扫描控制器类，控制器类都在com.example.stu.controller包及其子包下 -->
+    <context:component-scan base-package="com.example.stu.controller" />
+</beans>
